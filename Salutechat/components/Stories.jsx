@@ -13,6 +13,7 @@ import foto2 from '../images/foto-stories/foto6.jpg';
 import foto3 from '../images/foto-stories/foto4.jpg';
 import foto4 from '../images/foto-stories/foto3.jpg';
 import foto5 from '../images/foto-stories/foto2.jpg';
+import { COLORS } from '../constants';
 
 const styleStory = {
     justifyContent: 'center', 
@@ -50,11 +51,11 @@ const Stories = () => {
                     </>
             </TouchableHighlight>
             {stories.map(story => (
-                <TouchableOpacity style={{width: 55, marginRight: 15}}>
+                <TouchableOpacity style={{width: 55, marginRight: 15}} key={story.name}>
                 <>
                     <View style={{...styleStory,
                         borderWidth: 2,
-                        borderColor: '#29AB51',
+                        borderColor: COLORS.salutLight,
                         borderStyle: 'solid'
                     }}>
                         <Image source={story.image}

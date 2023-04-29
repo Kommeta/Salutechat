@@ -3,22 +3,42 @@ import {
     View,
     Image,
     StyleSheet,
+    TouchableOpacity,
 } from 'react-native';
-import home from '../images/home.png';
+import { Link, useRoute } from '@react-navigation/native';
+import doc from '../images/doc.png';
+import docGrey from '../images/doc-grey.png';
 import phone from '../images/phone.png';
+import phoneGrey from '../images/phone-grey.png';
 import add from '../images/add.png';
-import message from '../images/message.png';
+import addGrey from '../images/add-grey.png';
+import chat from '../images/messages.png';
+import chatGrey from '../images/messages-grey.png';
 import user from '../images/user.png';
+import userGrey from '../images/user-grey.png';
+import { COLORS } from '../constants';
 
 const Footer = () => {
 
+    const route = useRoute()
+
     return (
         <View style={styles.wrapper}>
-            <Image source={home} style={styles.icon}/>
-            <Image source={phone} style={styles.icon}/>
-            <Image source={add} style={{width:  40, height: 40}}/>
-            <Image source={message} style={styles.icon}/>
-            <Image source={user} style={styles.icon}/>
+            <Link to={{screen: 'Chat'}} style={{height: 40}} >
+                <Image source={route.name === 'Chat' ? chat : chatGrey} style={styles.icon}/>
+            </Link>
+            <Link to={{screen: 'Calls'}} style={{height: 40}} >
+                <Image source={route.name === 'Calls' ? phone : phoneGrey} style={styles.icon}/>
+            </Link>
+            <TouchableOpacity onPress={() => console.log('add')}>
+                <Image source={route.name === 'Add' ? add : addGrey} style={{width:  40, height: 40}}/>
+            </TouchableOpacity>
+            <Link to={{screen: 'Profile'}} style={{height: 40}}>
+                <Image source={route.name === 'Profile' ? user : userGrey} style={styles.icon}/>
+            </Link>
+            <Link to={{screen: 'Profile'}} style={{height: 40}}>
+                <Image source={route.name === 'Informations' ? doc : docGrey} style={styles.icon}/>
+            </Link>
         </View>
     );
 }
@@ -28,20 +48,22 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around', 
         alignItems: 'center',
-        marginTop: 30,
-        backgroundColor: '#cfe7ffb5',
-        paddingVertical: 20,
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
-        borderColor: '#446789',
-        borderWidth: 1,
-        width: '100%',
+        backgroundColor: '#fff',
+        opacity: 0.9,
+        paddingVertical: 15,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderColor: COLORS.salutLight,
+        borderTopWidth: 2,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        width: '101%',
         position: 'absolute',
-        bottom: -10
+        bottom: 0
     },
     icon: {
         width: 30,
-        height: 30
+        height: 30,
     }
 });
 

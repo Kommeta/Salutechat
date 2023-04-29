@@ -4,9 +4,8 @@ import {
     StyleSheet,
     TouchableHighlight,
     Image,
-    Text,
 } from 'react-native';
-import logo from '../images/salut-logo.png';
+import logo from '../images/salut-logo2.png';
 import search from '../images/search.png';
 
 const Header = () => {
